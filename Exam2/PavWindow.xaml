@@ -1,0 +1,43 @@
+﻿<Window x:Class="Exam2.PavWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Exam2"
+        mc:Ignorable="d"
+        Title="PavWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="pavGrid" AutoGenerateColumns="False" SelectedItem="{Binding pavSelected}">
+            <DataGrid.Columns >
+                <DataGridTextColumn Binding="{Binding Path=mall_name,UpdateSourceTrigger=PropertyChanged}" Header="Название ТЦ"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=number,UpdateSourceTrigger=PropertyChanged}" Header="Номер"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=floor,UpdateSourceTrigger=PropertyChanged}" Header="Этаж"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=status,UpdateSourceTrigger=PropertyChanged}" Header="Статус"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=area,UpdateSourceTrigger=PropertyChanged}" Header="Площадь"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=areacost,UpdateSourceTrigger=PropertyChanged}" Header="Стоимость кв.м."></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=added_value_ratio,UpdateSourceTrigger=PropertyChanged}" Header="Коэффициент"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Column="1">
+            <TextBlock>Название ТЦ</TextBlock>
+            <TextBox IsReadOnly="True" Text="{Binding Path= SelectedItem.mall_name,ElementName=pavGrid,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <TextBlock>Номер</TextBlock>
+            <TextBox Text="{Binding Path= SelectedItem.number,ElementName=pavGrid,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <TextBlock>Этаж</TextBlock>
+            <TextBox Text="{Binding Path= SelectedItem.floor,ElementName=pavGrid,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <TextBlock>Статус</TextBlock>
+            <TextBox Text="{Binding Path= SelectedItem.status,ElementName=pavGrid,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <TextBlock>Площадь</TextBlock>
+            <TextBox Text="{Binding Path= SelectedItem.area,ElementName=pavGrid,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <TextBlock>Стоимость кв.м.</TextBlock>
+            <TextBox Text="{Binding Path= SelectedItem.areacost,ElementName=pavGrid,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <TextBlock>Коэффициент</TextBlock>
+            <TextBox Text="{Binding Path = SelectedItem.added_value_ratio,ElementName=pavGrid,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <Button x:Name="delete" Background="#FFFF9C1A" Click="Delete_Click">Delete</Button>
+        </StackPanel>
+    </Grid>
+</Window>
