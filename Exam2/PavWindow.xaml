@@ -37,7 +37,15 @@
             <TextBox Text="{Binding Path= SelectedItem.areacost,ElementName=pavGrid,UpdateSourceTrigger=PropertyChanged}"></TextBox>
             <TextBlock>Коэффициент</TextBlock>
             <TextBox Text="{Binding Path = SelectedItem.added_value_ratio,ElementName=pavGrid,UpdateSourceTrigger=PropertyChanged}"></TextBox>
-            <Button x:Name="delete" Background="#FFFF9C1A" Click="Delete_Click">Delete</Button>
+            <Button x:Name="edit" Background="#FFFF9C1A" Click="Edit_Click">Изменить</Button>
+            <Button x:Name="delete" Background="#FFFF9C1A" Click="Delete_Click">Удалить</Button>
+            <TextBlock HorizontalAlignment="Center">Фильтр</TextBlock>
+            <ComboBox SelectionChanged="ComboBox_SelectionChanged">
+                <ComboBoxItem>Без фильтров</ComboBoxItem>
+                <ComboBoxItem>Свободен</ComboBoxItem>
+                <ComboBoxItem>Забронирован</ComboBoxItem>
+                <ComboBoxItem>Арендован</ComboBoxItem>
+            </ComboBox>
         </StackPanel>
     </Grid>
 </Window>

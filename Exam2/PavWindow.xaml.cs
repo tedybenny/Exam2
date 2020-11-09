@@ -46,7 +46,21 @@ namespace Exam2
             pavSelected.status = "Удален";
             db.SaveChanges();
             OnPropertyChanged("pavSelected");
-            db.Pavilions.Load();
+            pavGrid.ItemsSource = db.Pavilions.Local.ToBindingList().Where(
+               p => p.status != "Удален");
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            db.SaveChanges();
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox combo = (ComboBox)sender;
+            ComboBoxItem selectedItem = (ComboBoxItem)combo.SelectedItem;
+
+
         }
     }
 }
